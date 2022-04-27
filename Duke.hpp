@@ -7,7 +7,7 @@
 #endif
 namespace coup {
 
-    class Duke : public coup::Player {
+    class Duke : public Player {
     private:
         Game game;
         string _name;
