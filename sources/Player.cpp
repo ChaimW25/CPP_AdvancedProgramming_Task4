@@ -18,6 +18,7 @@ namespace coup {
 
 
     void Player::income() {
+        this->coinNum++;
     }
     void Player::foreign_aid() {
     }
@@ -27,7 +28,7 @@ namespace coup {
         return "";
     }
     int Player::coins() {
-        return 0;
+        return this->coinNum;
     }
 
 

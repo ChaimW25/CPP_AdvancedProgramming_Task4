@@ -6,9 +6,12 @@ using namespace std;
 
 namespace coup {
 
-    Duke::Duke(Game g, const string &n) {
+    Duke::Duke(Game g,  string n) {
         this->game = move(g);
         this->_name = n;
+        this->_role="Duke";
+        this->coinNum=0;
+        g.addPlayer(*this);
     }
     void Duke::block(const Player &p) {
     }

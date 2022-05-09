@@ -6,9 +6,12 @@ using namespace std;
 
 namespace coup {
 
-    Captain::Captain(Game g, const string &n) {
+    Captain::Captain(Game g, string n) {
         this->game = move(g);
         this->_name = n;
+        this->_role="Captain";
+        this->coinNum=0;
+        g.addPlayer(*this);
     }
     void Captain::steal(const Player &p){
     }

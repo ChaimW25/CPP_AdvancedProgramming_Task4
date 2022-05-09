@@ -1,10 +1,12 @@
-#include "Player.hpp"
 #pragma once
 
-#ifndef GAME_HPP
-#define GAME_HPP
+#include "Player.hpp"
+#include "Game.hpp"
+
+//#ifndef GAME_HPP
+//#define GAME_HPP
 #include "Captain.hpp"
-#endif
+//#endif
 namespace coup {
 
     class Captain : public coup::Player {
@@ -12,7 +14,7 @@ namespace coup {
         Game game;
         string _name;
     public:
-        Captain(Game g, const string &n);
+        Captain(Game g,  string n);
 
         void steal(const Player &p);
 
