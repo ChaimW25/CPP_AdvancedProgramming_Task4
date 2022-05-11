@@ -3,7 +3,12 @@
 #include <string>
 #include <iostream>
 #include <vector>
-#include "Player.hpp"
+//#include "Player.hpp"
+//#include "Ambassador.hpp"
+//#include "Assassin.hpp"
+//#include "Captain.hpp"
+//#include "Contessa.hpp"
+//#include "Duke.hpp"
 
 //#ifndef AME_HPP
 //#define AME_HPP
@@ -16,28 +21,47 @@
 
 using namespace std;
 namespace coup {
+    class Player;
+//    class Ambassador;
+//    class Assassin;
+//    class Duke;
+//    class Contessa;
+//    class Captain;
     class Game {
+    public:
 
-        vector<Player*> playerNames;
+//        vector<Player> playerNames;
+        int GameTurn;
+        int size=0;
+        bool started=false;
+        vector<Player*> playerNamesP;
 
 
 //        vector<string*> playerNamesP;
 
-    public:
         Game();
 
-        vector<string> players();
+        bool playerExist(Player &p);
+
+        void sizeIncrement();
+
+
+            vector<string> players();
+
+        vector<Player*>* myVector();
 
 //        vector<Player> getPlayers();
 
-        void addPlayer(Player &name);
+        void addPlayer(Player *name);
 
         void removePlayer(Player &name);
 
 
-        static string turn();
+         string turn();
 
-        static string winner();
+         void turnIncrement();
+
+         string winner();
 
     };
 }
