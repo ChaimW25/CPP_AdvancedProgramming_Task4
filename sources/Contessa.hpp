@@ -1,22 +1,28 @@
 #pragma once
 
 #include "Player.hpp"
-#include "Game.hpp"
+//#include "Game.hpp"
 
 //#ifndef GAME_HPP
 //#define GAME_HPP
-#include "Contessa.hpp"
+//#include "Contessa.hpp"
 //#endif
 namespace coup {
+//    class Game;
+class Player;
+
 
     class Contessa : public coup::Player {
     private:
-        Game game;
-        string _name;
+//        Game game;
+//        string _name;
+        string _role;
     public:
-        Contessa(Game g,  string n);
+        Contessa(Game &g,  string n);
 
         void block(const Player &p);
+        string role();
+
 
 
     };
