@@ -7,39 +7,61 @@ using namespace std;
 namespace coup {
 
     Captain::Captain(Game &g, string name): Player(g,name) {
-//        this->game = move(g);
-//        this->_name = n;
         this->_role="Captain";
-//        this->coinNum=0;
     }
+
     void Captain::steal( Player &p){
-        if(validTurn()){
+        if(coinNum>=10){
+            throw("have to coup");
+        }
+        if (legalAmount() && validTurn()) {
             if (p.coinNum>=2){
                 p.coinNum-=2;
                 this->coinNum+=2;
-                game.turnIncrement();
+                p.coinsIStoled=2;
+                game.nextTurn();
+                enemy=&p;
+                lastAction=2;
             }
-        else {
-            this->coinNum+=p.coinNum;
-            p.coinNum=0;
-            game.turnIncrement();
-
+            else {
+                this->coinNum+=p.coinNum;
+                p.coinsIStoled=1;
+                p.coinNum=0;
+                game.nextTurn();
+                enemy=&p;
+                lastAction=2;
             }
-
-//            this->game.GameTurn++;
         }
         else{
-            throw("Illegal turn");
+            throw("Illegal turn or amount");
+        }
+    }
+
+    void Captain::block( Player &p){
+        if(coinNum>=10){
+            throw("have to coup");
+        }
+        if (legalAmount() ) {
+            if(p.lastAction==2){
+                int temp= p.enemy->coinsIStoled;
+                p.coinNum-=temp;
+                p.enemy->coinNum+=temp;
+                p.lastAction=-1;
+            }
+            else {
+                throw ("theres no steal");
+            }
+        }
+        else {
+            throw ("Illegal turn or amount");
         }
 
     }
-    void Captain::block(const Player &p){
-        this->game.turnIncrement();
 
-
-    }
     string Captain::role(){
         return "Captain";
     }
 }
+
+
 
