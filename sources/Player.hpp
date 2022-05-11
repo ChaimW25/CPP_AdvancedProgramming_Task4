@@ -18,17 +18,25 @@ namespace coup {
     class Player {
     public:
         int coinNum=0;
-        int index;
+//        int index;
         string _name;
+        bool alive=true;
         Game &game;
+        bool cheapCoup=false;
+        Player* enemy=NULL;
+        int coinsIStoled=0;
+        int lastAction=-1;
+        // 0-income
+        //1-foreign
+        //2-steal
+        //3-assissincoup
+        //4-coup
+        //-1-none
 
         Player(Game &game, string name);
-//        Player();
-        int getIndex(){
-            return index;
-        }
 
         string getName();
+
         void income();
 
         void foreign_aid();
@@ -40,6 +48,7 @@ namespace coup {
         int coins();
 
         bool validTurn();
+
         bool legalAmount();
 
 
