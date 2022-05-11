@@ -1,25 +1,32 @@
-#pragma once
-
-#include "Player.hpp"
-#include "Game.hpp"
-
-//#ifndef GAME_HPP
-//#define GAME_HPP
+#include <iostream>
+//#include "Player.hpp"
 #include "Duke.hpp"
-//#endif
+#include <cstring>
+using namespace std;
+
 namespace coup {
 
-    class Duke : public Player {
-    private:
-        Game game;
-        string _name;
-    public:
-        Duke(Game g,  string n);
+    Duke::Duke(Game &g,  string name) : Player(g,name){
+//        this->game = move(g);
+//        this->_name = n;
+        this->_role="Duke";
+//        this->coinNum=0;
+    }
+    void Duke::block(const Player &p) {
+        this->game.turnIncrement();
 
-        void block(const Player &p);
+    }
+    void Duke::tax() {
+        this->coinNum+=3;
+        cout<<"the turn is"<<this->getName()<<endl;
+        this->game.turnIncrement();
+        cout<<"nows turn??"<<this->game.turn()<<endl;
 
-        void tax();
 
+    }
+    string Duke::role() {
+        return "Duke";
+    }
 
-    };
 }
+
