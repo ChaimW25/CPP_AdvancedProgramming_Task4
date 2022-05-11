@@ -1,6 +1,7 @@
 #pragma once
 
 #include "string"
+#include "Game.hpp"
 
 #include <iostream>
 #include <vector>
@@ -13,32 +14,35 @@
 //#endif
 using namespace std;
 namespace coup {
+    class Game;
     class Player {
     public:
-        int coinNum;
+        int coinNum=0;
         int index;
         string _name;
-        string _role;
+        Game &game;
 
-        Player(int coin, string role, string name);
-        Player();
+        Player(Game &game, string name);
+//        Player();
         int getIndex(){
             return index;
         }
 
-        string getName(){
-            return _name;
-        }
+        string getName();
         void income();
 
         void foreign_aid();
 
-        void coup(const Player &p);
+        virtual void coup( Player &p);
 
-        string role();
+        virtual string role();
 
         int coins();
 
+        bool validTurn();
+        bool legalAmount();
 
-    };
+
+
+        };
 }
