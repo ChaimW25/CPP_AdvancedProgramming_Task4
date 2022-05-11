@@ -20,7 +20,7 @@ class Player;
     public:
         Contessa(Game &g,  string n);
 
-        void block(const Player &p);
+        void block( Player &p);
         string role();
 
 
