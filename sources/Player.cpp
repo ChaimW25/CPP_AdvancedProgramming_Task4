@@ -6,126 +6,84 @@ using namespace std;
 namespace coup {
 
     Player::Player(Game &game,  string name) :game(game),_name(name) {
-        if(game.size==6){
-            throw("enough players");
-        }
+//        if(game.playerNamesP.size()>=6){
+//            throw("enough players");
+//        }
         if(game.started==true){
             throw("game started already");
         }
-        game.addPlayer(this);
-//        this->game=game;
-//        this->_name=name;
-        this->index=this->game.players().size();
-        cout<<index<<"Indx"<<endl;
-//        this->coinNum=coin;
-//        this->game=game;
-////        this->_role=move(role);
-//        this->_name=move(name);
-
+        game.addPlayer(*this);
     }
-//    Player::Player() {
-//        this->coinNum=0;
-//        this->_role="";
-//        this->_name="";
-//    }
 
     string Player::getName(){
         return _name;
     }
 
-
     void Player::income() {
-        cout << "to income" << 0 % 5 << endl;
-        cout << game.turn() << " ? " << this->getName() << endl;
-        if (legalAmount()) {
-            if (validTurn()) {
-                cout << "legal" << endl;
-                this->coinNum++;
-                game.turnIncrement();
-                game.started=true;
-//            this->game.GameTurn++;
-            } else {
-                cout << "throw" << endl;
-
-                throw ("Illegal turn");
-            }}
-            else{
-                throw ("Illegal amount");
-            }
-
+        if (coinNum >= 10) {
+            throw ("have to coup");
+        }
+        if (legalAmount() && validTurn()) {
+            this->coinNum++;
+            game.started = true;
+            game.nextTurn();
+            lastAction=0;
+        } else {
+            throw ("Illegal turn or Illegal amount");
+        }
     }
+
     void Player::foreign_aid() {
-        if (legalAmount()) {
-            if(validTurn()){
+        if(coinNum>=10){
+            throw("have to coup");
+        }
+        if (legalAmount() && validTurn()) {
             this->coinNum+=2;
-            game.turnIncrement();
             game.started=true;
-
-
-//            this->game.GameTurn++;
+            game.nextTurn();
+            lastAction=1;
         }
-        else{
-            throw("Illegal turn");
-        }}
-        else{
-            throw ("Illegal amount");
+        else {
+            throw ("Illegal turn or amount" );
         }
-
     }
-    void Player::coup( Player &p) {
-        if (legalAmount()) {
 
-            if(validTurn()){
+    void Player::coup( Player &p) {
+        if (legalAmount() && validTurn()) {
             if (coinNum<7){
                 throw("not enough coins");
             }
-            else {
-                cout<<"check if alive"<<endl;
-//                if(game.playerExist(p)) {
-                    cout << "check if keep going"<<getName() << endl;
                     game.removePlayer(p);
                     this->coinNum -= 7;
-                    game.turnIncrement();
                     game.started=true;
-//                }
-//                else{
-//                    cout<<"no exist"<<endl;
-//                    throw("no exist");
-//                }
-            }
-
-//            this->game.GameTurn++;
+                    game.nextTurn();
+                    lastAction=4;
         }
         else{
             throw("Illegal turn");
-        }}
-    else{
-    throw ("Illegal amount");
-}
+        }
     }
+
     bool Player::validTurn(){
+//        cout<<game.turn()<<"hiiiiiiiiiiii"<<endl;
         if(this->getName()!=game.turn()){
             return false;
         }
         return true;
     }
+
     bool Player::legalAmount(){
-        if (game.size<2){
+        if (game.playerNamesP.size()<2){
             return false;
         }
         return true;
     }
-//    bool Player::started(){
-//        boo
-//        if()
-//    }
 
     string Player::role() {
-        return "rol";
+        return "";
     }
-    int Player::coins() {
-        cout<<"coin"<<endl;
 
+    int Player::coins() {
         return this->coinNum;
     }
 
