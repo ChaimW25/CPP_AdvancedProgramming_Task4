@@ -1,98 +1,43 @@
-<div dir="rtl" lang="he">
+# Coup - Strategy and Bluffing Board Game
+Coup is an exciting board game that combines elements of strategy and bluffing, making it reminiscent of poker. In Coup, players must outmaneuver their opponents to be the last one standing.
 
-# קו - שלב ב
+## Game Overview
+Coup is played using a deck of 15 cards. These cards consist of 5 unique types: Captain, Duke, Ambassador, Assassin, and Contessa. Each unique card has three copies in the deck, resulting in a total of 15 cards.
 
-קו (coup - הפיכה) הוא משחק קופסה עבור 2-6 שחקנים המשחקים אחד נגד השני כדי להישאר אחרונים על המגרש.
+## The objective of the game is to eliminate your opponents' cards while ensuring at least one of your own cards remains in play. Players use coins, referred to as "influence" in the game, to manipulate and eliminate other players' cards. Some unique cards also possess special abilities that can help players gain or lose coins.
 
-במטלה זו נממש חלק מחוקי המשחק.
+## Gameplay and Bluffing
+One of the most intriguing aspects of Coup is the element of deception. Players keep their cards hidden from opponents, allowing them to bluff and pretend to have specific cards with unique abilities. However, opponents can challenge a player's claim, potentially leading to the exposure and elimination of one of their cards.
 
-## חוקי המשחק
-בתחילת המשחק כל שחקן שולף קלף מהערימה. כל קלף מתאר  תפקיד אותו יכול לממש השחקן.  במרכז השולחן ישנה קופה של מטבעות. כל שחקן בתורו משחק לפי התפקיד אליו משתייך (פירוט התפקידים בהמשך) ויכול לקחת מטבעות בהתאם. מטרת המשחק היא להוציא לפועל "הפיכות" ולהדיח שחקנים אחרים מתפקידם. השחקן האחרון שנשאר בעל תפקיד מנצח.
- 
-## השחקן
+## Rules Summary
+At the beginning of the game, each player is dealt two cards from the deck.
+The game progresses with players taking turns in a clockwise order.
+On their turn, a player can perform actions such as taking coins, using special abilities of their claimed card, or initiating a coup to eliminate an opponent's card.
+Players can also perform actions that involve bluffing, pretending to have a card and using its corresponding ability, even if they don't actually possess that card.
+Opponents have the option to challenge a player's claim. If challenged, the accused player must reveal the claimed card. If their claim is false, they lose one of their cards.
+The game continues until all players except one have lost both their cards, and the remaining player is declared the winner.
+Please note that this is just a brief summary of the rules. For a more detailed understanding of gameplay and specific card abilities, it's recommended to refer to the official rules or instruction manual provided with the game.
 
-לכל שחקן יש שם משלו. 
+## Player Classes
+In this project, I have implemented classes for different player functions, each corresponding to a specific card in the game of Coup. These classes provide the necessary functionality and behavior for each player's actions and interactions within the game.
 
-בכל תור יכול שחקן, בלי קשר לתפקידו, לבצע את אחת מהפעולות הבאות:
+## Class List
+Ambassador.hpp and Ambassador.cpp: Represents the Ambassador card functionality.
+Assassin.hpp and Assassin.cpp: Represents the Assassin card functionality.
+Captain.hpp and Captain.cpp: Represents the Captain card functionality.
+Contessa.hpp and Contessa.cpp: Represents the Contessa card functionality.
+Duke.hpp and Duke.cpp: Represents the Duke card functionality.
+Game.cpp: Contains the game-related functions and logic.
+Player.cpp and Player.hpp: Contains the player-related functions and actions.
+By implementing these classes, I have organized the codebase and encapsulated the specific behaviors and abilities associated with each card. The classes are split into separate .hpp (header) and .cpp (implementation) files, adhering to good software engineering practices.
 
-1. שכר - `income` - לקחת מטבע מהערימה.  
-לפעולה זו אין עלות, אין פעולות נגדיות והשחקן מרוויח מטבע בודד.
+The .hpp files serve as the header files and contain the class declarations, while the corresponding .cpp files hold the implementations of the class functions.
 
-2. שכר כפול - `foreign_aid` - לקחת שני מטבעות מהערימה.  
-לפעולה זו אין עלות והיא מזכה את השחקן בשני מטבעות. אבל, ישנו תפקיד במשחק היכול לחסום את הפעולה הזו. אם השחקן נחסם בעת שמנסה לקחת שכר כפול, תורו מסתיים.
+This modular structure allows for better code maintainability, readability, and reusability. It also simplifies the inclusion and usage of specific player functionalities within the main game logic.
 
-3. הפיכה - `coup` -  להדיח שחקן יריב מתפקידו ובכך להוציא אותו מהמשחק.  
-עלות פעולה זו 7 מטבעות, אין לה פעולות נגדיות והיא מסתיימת בכך שהשחקן עליו הופעלה הפעולה מודח מתפקידו ומסיים את המשחק.
+To enhance the functionality of the game, make sure to implement the necessary methods and functions within each class. These should handle the specific actions and interactions related to the corresponding card or player.
 
-כל פעולה צריכה לעדכן את מספר המטבעות אותם מחזיק השחקן בהתאם.  
-אם הפעולה לא חוקית, יש לזרוק חריגה מתאימה.
+Feel free to explore the individual class files to understand the details of their implementations. Additionally, refer to the documentation within each file for further explanations and usage instructions.
 
-בנוסף, יש לממש את השיטות הבאות:
+Enjoy working with these player classes and have fun developing your Coup game project!
 
-*  `role` - פונקציה המחזירה את התפקיד של השחקן (ראו רשימת התפקידים למטה), לצורך תצוגה.
-
-* `coins` השיטה מחזירה כמה מטבעות יש לשחקן
-
-
-## תפקידים
-
-ישנם תפקידים שונים של שחקנים, שיש להם כישורים מיוחדים:
-
-1. דוקס - `Duke`: יכול לקחת מס בגובה שלושה מטבעות מהקופה מבלי שאף שחקן יכול למנוע ממנו. בנוסף, הדוקס יכול לחסום פעולת שכר כפול. השחקן שנחסם מחזיר את שני המטבעות לקופה.
-
-2. מתנקש - `Assassin`: יכול להדיח שחקן מתפקידו בעלות 3 מטבעות בלבד (במקום 7). אולם, יש תפקיד היכול למנוע פעולה זו מהמתנקש. אם מתנקש נחסם השחקן שהודח בעקבות ההתנקשות חוזר למשחק.
-
-3. שגריר - `Ambassador`: יכול להעביר מטבע משחקן אחד לשחקן אחר בנוסף, השגריר יכול למנוע את פעולת הגניבה המפורטת בהמשך.
-
-4. קפטן - `Captain`: יכול לגנוב 2 מטבעות משחקן אחר. פעולה זו יכולה להיחסם ע"י שגריר או ע"י קפטן אחר. (ז"א גם קפטן יכול לחסום גניבה, בדומה לשגריר).
-
-5. רוזנת - `Contessa`: יכולה לחסום את פעולת ההתנקשות.
-
-הערות:
-
-* יכולים להיות שני שחקנים או יותר בעלי אותו תפקיד - לא קורה שום דבר מיוחד במצב זה.
-
-* אם שחקן מחזיק 10 מטבעות בתחילת תורו, הוא חייב לבצע הפיכה באותו תור
-
-* פעולות חסימה לא צריכות להמתין לתור השחקן החוסם ולא מבזבזות לו תור אלא מתבצעות "בזמן אמת". במשחק שלנו לא נממש תגובות "בזמן אמת" לכן ממשו את הפתרון הבא:  
-שחקן שביצע פעולה שניתנת לחסימה, ניתן לחסום את הפעולה שלו עד שהגיע תורו לשחק שוב.  
-דוגמה:  
-שחקן 1 לקח שכר כפול ושחקן 3 מחזיק בקלף דוקס. שחקן 3 לא צריך לחכות לתורו כדי לחסום את שחקן 1. אבל, אם הגיע שוב תורו של שחקן 1, שחקן 3 כבר לא יכול לבקש ממנו להחזיר את המטבעות לקופה.
-
-## מהלך המשחק
-
-לכל משחק יש את השחקנים שמשחקים בו, מה מצבו של כל שחקן ובסיום המשחק, מי המנצח. בנוסף, המשחק יודע תור מי עכשיו. התורות נקבעים לפי סדר ההצטרפות למשחק.
-
-יש לממש את השיטות
-
-1. תור - `turn` - הדפסת שם השחקן אשר תורו לשחק כעת.
-2. שחקנים פעילים - `players` - השיטה מחזירה את שמות השחקנים שפעילים כעת במשחק.
-3. מנצח - `winner` - השיטה מחזירה את שם המנצח. אם המשחק עדיין פעיל, השיטה תזרוק שגיאה.
-
-
-בשלב ב עליכם לכתוב מימוש מלא העובר את כל הבדיקות.
-כיתבו את כל הקבצים הדרושים כך שהפקודות הבאות יעבדו ללא שגיאות:
-
-<div dir='ltr'>
-
-	make test1 && ./test1
-	make test2 && ./test2
-	make test3 && ./test3
-	make tidy
-	make valgrind
-
-</div>
-
-אין לשנות קבצים קיימים אלא רק להוסיף קבצים חדשים.
-
-בנוסף, לצורך הצגה, יש לכתוב תוכנית ראשית יצירתית, המדגימה את כל הפעולות של הלוח והשחקנים השונים.
-
-יש לפתור את המטלה באופן עצמאי.
-
-* מותר להתייעץ עם סטודנטים אחרים או לחפש מידע באינטרנט;
-אסור להעתיק קטעי-קוד שלמים מסטודנטים אחרים או מהאינטרנט.
-* יש לדווח על כל עזרה שקיבלתם, מסטודנטים אחרים או מהאינטרנט, בהתאם ל[תקנון היושר של המחלקה](https://www.ariel.ac.il/wp/cs/wp-content/uploads/sites/88/2020/08/Guidelines-for-Academic-Integrity.pdf).
-
-
-בהצלחה
-</div>
