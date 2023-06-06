@@ -4,7 +4,7 @@ Coup is an exciting board game that combines elements of strategy and bluffing, 
 ## Game Overview
 Coup is played using a deck of 15 cards. These cards consist of 5 unique types: Captain, Duke, Ambassador, Assassin, and Contessa. Each unique card has three copies in the deck, resulting in a total of 15 cards.
 
-## The objective of the game is to eliminate your opponents' cards while ensuring at least one of your own cards remains in play. Players use coins, referred to as "influence" in the game, to manipulate and eliminate other players' cards. Some unique cards also possess special abilities that can help players gain or lose coins.
+The objective of the game is to eliminate your opponents' cards while ensuring at least one of your own cards remains in play. Players use coins, referred to as "influence" in the game, to manipulate and eliminate other players' cards. Some unique cards also possess special abilities that can help players gain or lose coins.
 
 ## Gameplay and Bluffing
 One of the most intriguing aspects of Coup is the element of deception. Players keep their cards hidden from opponents, allowing them to bluff and pretend to have specific cards with unique abilities. However, opponents can challenge a player's claim, potentially leading to the exposure and elimination of one of their cards.
@@ -23,12 +23,19 @@ In this project, I have implemented classes for different player functions, each
 
 ## Class List
 Ambassador.hpp and Ambassador.cpp: Represents the Ambassador card functionality.
+
 Assassin.hpp and Assassin.cpp: Represents the Assassin card functionality.
+
 Captain.hpp and Captain.cpp: Represents the Captain card functionality.
+
 Contessa.hpp and Contessa.cpp: Represents the Contessa card functionality.
+
 Duke.hpp and Duke.cpp: Represents the Duke card functionality.
+
 Game.cpp: Contains the game-related functions and logic.
+
 Player.cpp and Player.hpp: Contains the player-related functions and actions.
+
 By implementing these classes, I have organized the codebase and encapsulated the specific behaviors and abilities associated with each card. The classes are split into separate .hpp (header) and .cpp (implementation) files, adhering to good software engineering practices.
 
 The .hpp files serve as the header files and contain the class declarations, while the corresponding .cpp files hold the implementations of the class functions.
